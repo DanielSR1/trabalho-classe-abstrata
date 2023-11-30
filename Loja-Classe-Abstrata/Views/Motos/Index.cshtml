@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Loja_Classe_Abstrata.Models.Moto>
+
+@{
+    ViewData["Title"] = "Motos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Motos</h1>
+
+
+<button type="button" class="btn btn-primary"><a asp-action="Create">Adicionar Moto</a></button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope ="col">
+                @Html.DisplayNameFor(model => model.Marca)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Cor)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Cor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
